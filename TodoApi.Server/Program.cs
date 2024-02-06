@@ -6,7 +6,15 @@ builder.Services.AddDbContext<TodoApiServerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TodoApiServerContext") ?? throw new InvalidOperationException("Connection string 'TodoApiServerContext' not found.")));
 
 // Add services to the container.
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("*");
+        });
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -25,6 +33,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
