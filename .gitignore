@@ -1,3 +1,5 @@
 TodoApi.Server/bin/
 TodoApi.Server/obj/
+todoapi.client/obj/
+todoapi.client/npm_modules/
 .vs/
