@@ -72,7 +72,9 @@
     });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    $pad: .5rem;
+
     th {
         font-weight: bold;
     }
@@ -86,8 +88,8 @@
     }*/
 
     th, td {
-        padding-left: .5rem;
-        padding-right: .5rem;
+        padding-left: $pad;
+        padding-right: $pad;
     }
 
     .weather-component {
